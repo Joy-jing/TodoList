@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23eb29e0-aaeb-4c1b-8c22-31c7762cd8eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/TaskTypeMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/controller/TaskController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/controller/TaskTypeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/neu/jing/dao/TaskDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/dao/TaskDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/neu/jing/dao/TaskTypeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/dao/TaskTypeDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/neu/jing/jing.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/neu/jing/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/service/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/neu/jing/service/TaskTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/service/TaskTypeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/neu/jing/service/impl/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/service/impl/TaskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/neu/jing/service/impl/TaskTypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/service/impl/TaskTypeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TaskMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/TaskMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TaskTypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/TaskTypeMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +89,8 @@
       <option name="presentableId" value="Default" />
       <updated>1577154409069</updated>
       <workItem from="1577154412860" duration="7682000" />
-      <workItem from="1577267589481" duration="7875000" />
+      <workItem from="1577267589481" duration="11352000" />
+      <workItem from="1577320743610" duration="4792000" />
     </task>
     <task id="LOCAL-00001" summary="todo">
       <created>1577187222952</created>
@@ -93,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577187222952</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="todo">
+      <created>1577276650474</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1577276650474</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,14 +121,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="22" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1577268065709" />
-    <state x="488" y="48" key="#com.intellij.ide.util.MemberChooser" timestamp="1577158444991">
+    <state x="488" y="48" key="#com.intellij.ide.util.MemberChooser" timestamp="1577342584076">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="48" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1577158444991" />
-    <state x="283" y="0" key="CommitChangelistDialog2" timestamp="1577187221458">
+    <state x="488" y="48" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1577342584076" />
+    <state x="283" y="0" key="CommitChangelistDialog2" timestamp="1577276648514">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="283" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1577187221458" />
+    <state x="283" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1577276648514" />
     <state x="462" y="119" key="FileChooserDialogImpl" timestamp="1577187127279">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -144,6 +157,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1577187107675" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1577276654612">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1577276654612" />
+    <state x="359" y="102" width="647" height="524" key="find.popup" timestamp="1577327464074">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="359" y="102" width="647" height="524" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1577327464074" />
     <state x="57" y="59" key="new project wizard" timestamp="1577183494345">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

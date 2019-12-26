@@ -2,22 +2,28 @@ package cn.neu.jing.service.impl;
 
 import cn.neu.jing.dao.TaskDao;
 import cn.neu.jing.entity.Task;
+import cn.neu.jing.entity.TaskType;
 import cn.neu.jing.service.TaskService;
 
 import java.util.List;
 
 public class TaskServiceImpl implements TaskService {
     private TaskDao taskDao;
-    public void addTask(Task task) {
+    public boolean addTask(Task task) {
         taskDao.addTask(task);
+        return true;
     }
 
-    public void updateTask(Task task) {
+    public boolean updateTask(Task task) {
         taskDao.updateTask(task);
+        return true;
+
     }
 
-    public void deleteTask(int task_id) {
+    public boolean deleteTask(int task_id) {
         taskDao.deleteTask(task_id);
+        return true;
+
     }
 
     public List<Task> findAll() {
@@ -28,12 +34,16 @@ public class TaskServiceImpl implements TaskService {
         return taskDao.todayTask();
     }
 
-    public void addTodayTask(Task task) {
+    public boolean addTodayTask(Task task) {
         taskDao.addTodayTask(task);
+        return true;
+
     }
 
-    public void addMajorTask(Task task) {
+    public boolean addMajorTask(Task task) {
         taskDao.addMajorTask(task);
+        return true;
+
     }
 
     public void deleteTodayTask(int task_id) {
@@ -42,5 +52,10 @@ public class TaskServiceImpl implements TaskService {
 
     public void deleteMajorTask(int task_id) {
         taskDao.deleteMajorTask(task_id);
+    }
+
+    @Override
+    public Task selectById(int task_id) {
+        return taskDao.selectById(task_id);
     }
 }

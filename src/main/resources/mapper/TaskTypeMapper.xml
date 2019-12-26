@@ -9,7 +9,7 @@
 
     <insert id="addTaskType" parameterType="TaskType">
         INSERT INTO task_type(type_id,type_name)
-        VALUE (#{type_id},#{type_name})
+        VALUES (#{type_id},#{type_name})
     </insert>
 
     <update id="updateTaskType" parameterType="TaskType">
@@ -20,8 +20,7 @@
 
     <select id="selectTaskType" resultType="TaskType">
         SELECT task_name,start_time,end_time,remark,task_major,task_finish,type_name
-        FROM task,task_type
-        WHERE task.type_id = task_type.type_id
+        FROM task a LEFT JOIN  task_type b ON a.type_id = b.type_id
    </select>
 
 </mapper>

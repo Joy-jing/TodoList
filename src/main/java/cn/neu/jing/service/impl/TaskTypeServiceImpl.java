@@ -10,15 +10,25 @@ public class TaskTypeServiceImpl implements TaskTypeService {
     private TaskTypeDao taskTypeDao;
 
 
-    public void addTaskType(TaskType taskType) {
+    public boolean addTaskType(TaskType taskType) {
         taskTypeDao.addTaskType(taskType);
+        return true;
     }
 
-    public void updateTaskType(TaskType taskType) {
+    public boolean updateTaskType(TaskType taskType)
+    {
         taskTypeDao.updateTaskType(taskType);
+        return true;
     }
 
     public List<TaskType> selectTaskType(int type_id) {
         return taskTypeDao.selectTaskType(type_id);
     }
+
+    @Override
+    public TaskType selectById(int type_id) {
+        return taskTypeDao.selectById(type_id);
+    }
+
+
 }
