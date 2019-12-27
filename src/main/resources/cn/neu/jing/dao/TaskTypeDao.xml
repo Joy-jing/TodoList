@@ -1,15 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.neu.jing.TaskDao">
-    <resultMap type="TaskType" id="taskType" >
-        <id property="typeId" column="type_id"/>
-        <result property="typeName" column="type_name"/>
-    </resultMap>
-
+<mapper namespace="cn.neu.jing.dao.TaskTypeDao">
+<!--    <resultMap type="TaskType" id="taskType" >-->
+<!--        <id property="typeId" column="type_id"/>-->
+<!--        <result property="typeName" column="type_name"/>-->
+<!--    </resultMap>-->
+    <select id="selectById" parameterType="int" resultType="TaskType">
+        select type_name from task_type where type_id = #{type_id}
+    </select>
     <insert id="addTaskType" parameterType="TaskType">
-        INSERT INTO task_type(type_id,type_name)
-        VALUES (#{type_id},#{type_name})
+        INSERT INTO task_type(type_name)
+        VALUES (#{type_name})
     </insert>
 
     <update id="updateTaskType" parameterType="TaskType">

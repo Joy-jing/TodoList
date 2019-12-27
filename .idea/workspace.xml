@@ -2,18 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23eb29e0-aaeb-4c1b-8c22-31c7762cd8eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/controller/TaskController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/controller/TaskTypeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/axis.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/cn/neu/jing/dao/TaskDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/springmvc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ItemsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/TaskTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/neu/jing/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/controller/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/neu/jing/controller/TaskTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/controller/TaskTypeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/neu/jing/dao/TaskDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/dao/TaskDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/neu/jing/dao/TaskTypeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/dao/TaskTypeDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/neu/jing/entity/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/entity/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/neu/jing/entity/TaskType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/entity/TaskType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/neu/jing/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/service/TaskService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/neu/jing/service/TaskTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/service/TaskTypeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/neu/jing/service/impl/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/service/impl/TaskServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/neu/jing/service/impl/TaskTypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/neu/jing/service/impl/TaskTypeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TaskMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/TaskMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TaskTypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/TaskTypeMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TaskMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TaskTypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/cn/neu/jing/dao/TaskTypeDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,29 +60,180 @@
     </option>
   </component>
   <component name="ProjectId" id="1VPUps7VgkcsTlnmfMv35yi9yY4" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/spring" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="spring" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java开发\TodoList\src\main\resources\spring" />
+      <recent name="D:\java开发\TodoList\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\java开发\TodoList\src\main\resources\cn\neu\jing\dao" />
+      <recent name="D:\java开发\TodoList\src\main\resources\mapper" />
+      <recent name="D:\java开发\TodoList\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.TaskTest.selectById">
+    <configuration name="ItemsTest.addTaskType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TodoList" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ItemsTest" />
+      <option name="METHOD_NAME" value="addTaskType" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ItemsTest.selectById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TodoList" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ItemsTest" />
+      <option name="METHOD_NAME" value="selectById" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TodoList" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TaskTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskTest.findAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TodoList" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TaskTest" />
+      <option name="METHOD_NAME" value="findAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskTest.selectById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TodoList" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TaskTest" />
+      <option name="METHOD_NAME" value="selectById" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="springmvc" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.50" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="TodoList:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_TodoList_2" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="55183" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="TodoList:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TaskTest.selectById" />
+        <item itemvalue="JUnit.ItemsTest.selectById" />
+        <item itemvalue="JUnit.TaskTest.findAll" />
+        <item itemvalue="JUnit.TaskTest" />
+        <item itemvalue="JUnit.ItemsTest.addTaskType" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
       <list>
         <serviceView>
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
@@ -90,7 +252,11 @@
       <updated>1577154409069</updated>
       <workItem from="1577154412860" duration="7682000" />
       <workItem from="1577267589481" duration="11352000" />
-      <workItem from="1577320743610" duration="4792000" />
+      <workItem from="1577320743610" duration="11416000" />
+      <workItem from="1577364823493" duration="355000" />
+      <workItem from="1577409163036" duration="12691000" />
+      <workItem from="1577431481615" duration="2468000" />
+      <workItem from="1577442044122" duration="4681000" />
     </task>
     <task id="LOCAL-00001" summary="todo">
       <created>1577187222952</created>
@@ -106,13 +272,28 @@
       <option name="project" value="LOCAL" />
       <updated>1577276650474</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="todo">
+      <created>1577343441152</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1577343441152</updated>
+    </task>
+    <task id="LOCAL-00004" summary="todo">
+      <created>1577348051167</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1577348051168</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="todo" />
     <option name="LAST_COMMIT_MESSAGE" value="todo" />
   </component>
@@ -121,14 +302,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="22" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1577268065709" />
-    <state x="488" y="48" key="#com.intellij.ide.util.MemberChooser" timestamp="1577342584076">
+    <state x="274" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577344824212">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="48" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1577342584076" />
-    <state x="283" y="0" key="CommitChangelistDialog2" timestamp="1577276648514">
+    <state x="274" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1577344824212" />
+    <state x="488" y="48" key="#com.intellij.ide.util.MemberChooser" timestamp="1577445929600">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="283" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1577276648514" />
+    <state x="488" y="48" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1577445929600" />
+    <state x="283" y="0" key="CommitChangelistDialog2" timestamp="1577450104356">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="283" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1577450104356" />
     <state x="462" y="119" key="FileChooserDialogImpl" timestamp="1577187127279">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -137,37 +322,49 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="556" y="254" width="273" height="219" key="Github.ShareDialog/0.0.1366.728@0.0.1366.728" timestamp="1577187265620" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1577193252878">
+    <state width="1323" height="16" key="GridCell.Tab.0.bottom" timestamp="1577446738255">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1577193252878" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1577193252862">
+    <state width="1323" height="16" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1577446738255" />
+    <state width="1323" height="16" key="GridCell.Tab.0.center" timestamp="1577446738255">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1577193252862" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1577193252862">
+    <state width="1323" height="16" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1577446738255" />
+    <state width="1323" height="16" key="GridCell.Tab.0.left" timestamp="1577446738255">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1577193252862" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1577193252878">
+    <state width="1323" height="16" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1577446738255" />
+    <state width="1323" height="16" key="GridCell.Tab.0.right" timestamp="1577446738255">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1577193252878" />
-    <state x="184" y="6" key="SettingsEditor" timestamp="1577187107675">
+    <state width="1323" height="16" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1577446738255" />
+    <state x="184" y="6" key="SettingsEditor" timestamp="1577432453350">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1577187107675" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1577276654612">
+    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1577432453350" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1577348053941">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1577276654612" />
-    <state x="359" y="102" width="647" height="524" key="find.popup" timestamp="1577327464074">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1577348053941" />
+    <state x="359" y="102" width="647" height="524" key="find.popup" timestamp="1577411673082">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="359" y="102" width="647" height="524" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1577327464074" />
+    <state x="359" y="102" width="647" height="524" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1577411673082" />
     <state x="57" y="59" key="new project wizard" timestamp="1577183494345">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="57" y="59" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1577183494345" />
+    <state x="425" y="0" key="refactoring.ChangeSignatureDialog" timestamp="1577413650733">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="425" y="0" key="refactoring.ChangeSignatureDialog/0.0.1366.728@0.0.1366.728" timestamp="1577413650733" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1577427863468">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1577427863468" />
+    <state x="363" y="47" key="spring file set editor" timestamp="1577432015034">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="363" y="47" key="spring file set editor/0.0.1366.728@0.0.1366.728" timestamp="1577432015034" />
   </component>
 </project>

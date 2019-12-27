@@ -1,30 +1,30 @@
 package cn.neu.jing.entity;
 
 public class TaskType {
-    private int id;
-    private String task_name;
+    private int type_id;
+    private String type_name;
 
     @Override
     public String toString() {
         return "TaskType{" +
-                "id=" + id +
-                ", task_name='" + task_name + '\'' +
+                "id=" + type_id +
+                ", task_name='" + type_name + '\'' +
                 '}';
     }
 
-    public int getId() {
-        return id;
+    public int getType_id() {
+        return type_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setType_id(int type_id) {
+        this.type_id = type_id;
     }
 
-    public String getTask_name() {
-        return task_name;
+    public String getType_name() {
+        return type_name;
     }
 
-    public void setTask_name(String task_name) {
-        this.task_name = task_name;
+    public void setType_name(String type_name) {
+        this.type_name = type_name;
     }
 }

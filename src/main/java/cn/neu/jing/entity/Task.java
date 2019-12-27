@@ -1,11 +1,15 @@
 package cn.neu.jing.entity;
 
+import org.springframework.stereotype.Component;
+
+import java.sql.Timestamp;
 import java.util.Date;
 
+@Component
 public class Task {
     private int task_id;
     private String task_name;
-    private Date start_time;
+    private Timestamp start_time;
     private Date end_time;
     private String remark;
     private boolean task_major;
@@ -42,11 +46,11 @@ public class Task {
         this.task_name = task_name;
     }
 
-    public Date getStart_time() {
+    public Timestamp getStart_time() {
         return start_time;
     }
 
-    public void setStart_time(Date start_time) {
+    public void setStart_time(Timestamp start_time) {
         this.start_time = start_time;
     }
 

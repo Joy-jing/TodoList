@@ -1,16 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.neu.jing.TaskDao">
-    <resultMap type="task" id="taskResultMap">
-        <id property="taskId" column="task_id"/>
-        <result property="taskName" column="task_name"/>
-        <result property="startTime" column="start_time"/>
-        <result property="endTime" column="end_time"/>
-        <result property="remark" column="remark"/>
-        <result property="taskMajor" column="task_major"/>
-        <result property="taskFinish" column="task_finish"/>
-    </resultMap>
+<!--标识了ID-->
+<mapper namespace="cn.neu.jing.dao.TaskDao">
+        <select id="selectById" parameterType="int" resultType="Task">
+            select task_name from task where task_id = #{task_id}
+        </select>
+
+    <select id="findAll" resultType="Task">
+        SELECT *
+        FROM task;
+    </select>
     <insert id="addTask" parameterType="Task">
         INSERT INTO task(task_name,end_time,remark,task_major,task_finish,type_id)
         VALUES (#{taskName}, #{endTime},#{remark},#{remark},#{taskMajor},#{taskFinish},#{typeId})
@@ -26,10 +27,14 @@
         delete from task where task_id=#{taskId}
     </delete>
     <!--两表联合??-->
-    <select id="findAll" resultType="Task">
-        SELECT task_name,start_time,end_time,remark,task_major,task_finish,type_name
-        FROM task a LEFT JOIN  task_type b ON a.type_id = b.type_id
-    </select>
+<!--    <select id="findAll" resultType="Task">-->
+<!--        SELECT task_name,start_time,end_time,remark,task_major,task_finish,type_name-->
+<!--        FROM task a LEFT JOIN  task_type b ON a.type_id = b.type_id-->
+<!--        SELECT task_name,start_time,end_time,remark,task_major,task_finish-->
+<!--        FROM task-->
+<!--    </select>-->
+
+
 
     <select id="todayTask" resultMap="paperResultMap">
          select a.task_name,b.type_name
