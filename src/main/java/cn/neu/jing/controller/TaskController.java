@@ -72,4 +72,10 @@ public class TaskController {
         return "allTask";
 
     }
+    @RequestMapping(path="/allTask")
+
+    public String selectById(int task_id){
+        taskService.selectById(task_id);
+        return "";
+    }
 }

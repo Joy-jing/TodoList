@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import java.sql.Timestamp;
 import java.util.Date;
 
-@Component
 public class Task {
     private int task_id;
     private String task_name;

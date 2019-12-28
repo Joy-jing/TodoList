@@ -1,11 +1,9 @@
 package cn.neu.jing.service;
 
 import cn.neu.jing.entity.Task;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface TaskService {
 
     //添加任务

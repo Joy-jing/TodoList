@@ -30,7 +30,6 @@ public class TaskTypeServiceImpl implements TaskTypeService {
 
     @Override
     public TaskType selectById(int type_id) {
-        System.out.println("111");
         return taskTypeDao.selectById(type_id);
     }
 }

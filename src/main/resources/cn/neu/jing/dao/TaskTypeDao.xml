@@ -3,10 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.neu.jing.dao.TaskTypeDao">
-<!--    <resultMap type="TaskType" id="taskType" >-->
-<!--        <id property="typeId" column="type_id"/>-->
-<!--        <result property="typeName" column="type_name"/>-->
-<!--    </resultMap>-->
     <select id="selectById" parameterType="int" resultType="TaskType">
         select type_name from task_type where type_id = #{type_id}
     </select>
