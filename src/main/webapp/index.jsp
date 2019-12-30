@@ -22,35 +22,104 @@
     <style>
         .text{text-align:center;}
     </style>
+    <script>
+        $(document).ready(function(){
+            $("#add").click(function () {
+                // alert("我被电击了");
+                let title = $("#title").val();
+                // alert(title);
+                $.post("/todo/addTask",{title:title},function (response) {
+                    alert("到这里了吗");
+                    if(response.err_code == 1){
+                        alert(response.err_msg);
+                        $("#err").html(response.err_msg);
+                    }else{
+                        $("#task").html("<tr>\n" +
+                            "                    <th>title</th>\n" +
+                            "                    <th>开始时间</th>\n" +
+                            "                    <th>结束时间</th>\n" +
+                            "                    <th>备注</th>\n" +
+                            "                    <th>修改</th>\n" +
+                            "                    <th>删除</th>\n" +
+                            "                    <th>今日&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"glyphicon glyphicon-calendar\" aria-hidden=\"true\"></span></th>\n" +
+                            "                    <th>重要&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span></th>\n" +
+                            "                </tr>");
+                    }
+                })
+            });
+            $("#addType").click(function () {
+                // alert("可以了");
+                let type = $("#type").val();
+                $.post("/todo/addType",{type:type},function (response) {
+                    alert("。。。。。");
+                    if (response.err_code=="1"){
+                        alert(response.err_msg);
+                    }else{
+                        alert(response.err_msg);
+                    }
+                });
+            });
+
+            $("#updateType").click(function () {
+                alert("可以修改了");
+                let type = $("#content").val();
+                $.post("/todo/updateType",function (response) {
+                    alert("修改成功 ");
+
+
+                })
+            })
+
+        });
+
+    </script>
 </head>
-<body  class="text">
-<h2>Todo&nbsp;&nbsp;<input type="text" id="title" name="title" placeholder="添加ToDo任务类型" required="required" autocomplete="off">
-    <button type="button" class="btn btn-info">确定</button>
-</h2>
+<body class="text">
+<br/>
+<div class = "row">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Todo</label>
+                <div class="col-sm-6">
+                    <input type="text" id="title" class="form-control" name="title" placeholder="添加ToDo任务类型" required="required" autocomplete="off">
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-info" id = "add">确定</button>
+                </div>
+                <label class="col-sm-2 control-label" id="err"></label>
+            </div>
+        </form>
+</div>
 <hr/>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3">
-            任务类型
+        <div class="col-md-4">
+            <form class="form-horizontal">
+                <input type="text" id="type" class="form-control" name="title" placeholder="添加任务类型" required="required" autocomplete="off">
+<%--                <a href="/todo/addType" id="addType">确定</a>--%>
+                <button type="button" class="btn btn-info" id="addType">确定</button>
+            </form>
             <div class="row">
                 <div class="col-md-3">
-
                 </div>
                 <div class="col-md-6">
                     <div class="list-group">
                         <a href="#" class="list-group-item disabled">
                             游戏
                         </a>
-                        <a href="#" class="list-group-item">学习</a>
-                        <a href="#" class="list-group-item">学习</a>
+                        <a href="#" class="list-group-item" id="content">学习&nbsp;&nbsp;
+                            &nbsp;<a href="/todo/updateType" id="updateType"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;&nbsp;</a>
+                            <a href="/todo/deleteType" id="deleteType"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                        </a>
+                        <a href="#" class="list-group-item" >学习</a>
                         <a href="#" class="list-group-item">学习</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-9">任务列表
-            <table class="table table-bordered" style="text-align:center">
+        <div class="col-md-8">任务列表
+            <table id = "task"  class="table table-bordered" style="text-align:center">
                 <tr>
                     <th>任务名称</th>
                     <th>开始时间</th>

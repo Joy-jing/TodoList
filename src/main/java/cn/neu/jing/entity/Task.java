@@ -13,7 +13,7 @@ public class Task {
     private String remark;
     private boolean task_major;
     private boolean task_finish;
-    private int type_id;
+    private int type_id=1;
 
     @Override
     public String toString() {

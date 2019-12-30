@@ -32,4 +32,9 @@ public class TaskTypeServiceImpl implements TaskTypeService {
     public TaskType selectById(int type_id) {
         return taskTypeDao.selectById(type_id);
     }
+
+    @Override
+    public boolean deleteType(int type_id) {
+        return taskTypeDao.deleteType(type_id);
+    }
 }

@@ -4,22 +4,26 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.neu.jing.dao.TaskTypeDao">
     <select id="selectById" parameterType="int" resultType="TaskType">
-        select type_name from task_type where type_id = #{type_id}
+        select type_name from task_type where type_id = #{type_id};
     </select>
-    <insert id="addTaskType" parameterType="TaskType">
+    <insert id="addTaskType">
         INSERT INTO task_type(type_name)
-        VALUES (#{type_name})
+        VALUES (#{type_name});
     </insert>
 
-    <update id="updateTaskType" parameterType="TaskType">
+    <delete id="deleteType" parameterType="int">
+        delete from task_type,task where type_id=#{type_id};
+    </delete>
+
+    <update id="updateTaskType">
         UPDATE task_type
         SET TYPE_NAME = #{typeName}
-        WHERE  type_id = #{typeId}
+        WHERE  type_id = #{typeId};
     </update>
 
     <select id="selectTaskType" resultType="TaskType">
         SELECT task_name,start_time,end_time,remark,task_major,task_finish,type_name
-        FROM task a LEFT JOIN  task_type b ON a.type_id = b.type_id
+        FROM task a LEFT JOIN  task_type b ON a.type_id = b.type_id;
    </select>
 
 </mapper>

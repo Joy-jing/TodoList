@@ -29,4 +29,14 @@ public class ItemsTest {
         System.out.println(type.getType_name());
     }
 
+    @Test
+    public void addTaskType(){
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        TaskTypeService bean = ac.getBean(TaskTypeService.class);
+        TaskType type = new TaskType();
+        type.setType_name("工作");
+        boolean b = bean.addTaskType(type);
+        System.out.println(b);
+    }
+
 }

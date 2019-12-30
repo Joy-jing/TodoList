@@ -15,4 +15,5 @@ public interface TaskTypeService {
 
     //根据id查询类型名称
      TaskType selectById(int type_id);
+    boolean deleteType(int type_id);
 }

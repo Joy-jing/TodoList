@@ -24,7 +24,7 @@
     </update>
 
     <delete id="deleteTask" parameterType="Task">
-        delete from task where task_id=#{task_id}
+        delete from task_type where type_id=#{type_id};
     </delete>
     <!--两表联合??-->
 <!--    <select id="findAll" resultType="Task">-->
