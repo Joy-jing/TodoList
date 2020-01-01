@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.neu.jing.dao.TaskTypeDao">
-    <select id="selectById" parameterType="int" resultType="TaskType">
+    <select id="selectById"  resultType="TaskType">
         select type_name from task_type where type_id = #{type_id};
     </select>
     <insert id="addTaskType">
@@ -11,10 +11,10 @@
         VALUES (#{type_name});
     </insert>
     <select id="selectType" resultType="TaskType">
-        select type_name from task_type;
+        select * from task_type;
     </select>
 
-    <delete id="deleteType" parameterType="int">
+    <delete id="deleteType" >
         delete from task_type,task where type_id=#{type_id};
     </delete>
 

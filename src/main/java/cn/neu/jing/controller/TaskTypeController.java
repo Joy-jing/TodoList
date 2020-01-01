@@ -3,6 +3,7 @@ package cn.neu.jing.controller;
 import cn.neu.jing.entity.Task;
 import cn.neu.jing.entity.TaskType;
 import cn.neu.jing.service.TaskTypeService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,7 @@ public class TaskTypeController {
 //请求映射，需要提供请求路径
     @ResponseBody
     @RequestMapping(path = "/addType", method = RequestMethod.POST,produces = "application/json;charset=utf-8")
-    public String addTaskType(@RequestParam Map<String, Object> p) {
+    public String addTaskType(@RequestParam Map<String, Object> p) throws JsonProcessingException {
         String type = p.get("type").toString();
 //        String type = t.strip();
         Map<String,String > map = new HashMap<>();
@@ -37,10 +38,12 @@ public class TaskTypeController {
 //            int type_id = id+1;
 //            task.setType_id(type_id);
             task.setType_name(type);
+            System.out.println("===========================");
             System.out.println(task);
+            System.out.println("******************************");
+
             boolean b = taskTypeService.addTaskType(task);
             if (b) {
-                System.out.println("11111111111");
                 map.put("err_code", "");
             } else {
                 map.put("err_code", "1");
@@ -48,12 +51,12 @@ public class TaskTypeController {
             }
         }
         ObjectMapper mapper = new ObjectMapper();
-        try {
-            mapper.writeValueAsString(map);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "";
+//        try {
+            String s = mapper.writeValueAsString(map);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        return s;
     }
 
     //修改任务类型
@@ -69,27 +72,14 @@ public class TaskTypeController {
     }
     @ResponseBody
     @RequestMapping(path="/findType",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
-    public String selectType(@RequestParam Map<String, Object> p){
-        System.out.println("1111111111111");
-        Map<String,String > map = new HashMap<>();
-        List<TaskType> list = taskTypeService.selectType();
-        System.out.println("11111111111");
-        System.out.println("查询成功了");
-        //        map.put("err_code","0");
-//        if(b){
-//            System.out.println("11111111111");
-//            map.put("err_code", "");
-//        }else{
-//            map.put("err_code", "1");
-//            map.put("err_msg", "查询失败，请重试");
-//        }
-//        ObjectMapper mapper = new ObjectMapper();
-//        try {
-//            mapper.writeValueAsString(map);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-        return "";
+    public TaskType selectType(@RequestParam Map<String, Object> p){
+        System.out.println("===========");
+        System.out.println("paramsMap->"+p.get("id").toString());
+        int id = Integer.parseInt(p.get("id").toString());
+        TaskType list = taskTypeService.selectById(id);
+
+
+        return list;
     }
 
     //查询类型下的任务,需要传递类型？？

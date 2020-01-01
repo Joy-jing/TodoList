@@ -7,8 +7,8 @@ public class TaskType {
     @Override
     public String toString() {
         return "TaskType{" +
-                "id=" + type_id +
-                ", task_name='" + type_name + '\'' +
+                "type_id=" + type_id +
+                ", type_name='" + type_name + '\'' +
                 '}';
     }
 

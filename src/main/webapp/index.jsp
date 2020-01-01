@@ -48,13 +48,15 @@
                 })
             });
             $("#addType").click(function () {
-                // alert("可以了");
                 let type = $("#type").val();
-                alert(type);
                 $.post("/todo/addType",{type:type},function (response) {
-                    alert("。。。。。");
-                    if (response.err_code=="1"){
-                        alert(response.err_msg);
+                    console.log(response);
+
+                    if (response.err_code=1){
+                        $("#content:last").append("<li class=\"list-group-item\">response.data&nbsp;&nbsp;\n" +
+                            "                            &nbsp;<a href=\"/todo/updateType\" id=\"updateType\"><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>&nbsp;&nbsp;</a>\n" +
+                            "                            <a href=\"/todo/deleteType\" id=\"deleteType\"><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></a>\n" +
+                            "                        </li>");
                     }else{
                         alert(response.err_msg);
                     }
@@ -70,7 +72,7 @@
             });
 
             $("#findType").click(function () {
-                alert("可以查询了");
+                // alert("可以查询了");
                 $.get("/todo/findType",function (response) {
                     let list = response.data.list;
                     // $.each(list,function () {
@@ -114,16 +116,16 @@
                 <div class="col-md-3">
                 </div>
                 <div class="col-md-6">
-                    <div class="list-group">
+                    <div class="list-group" id = "content">
                         <button type="button" class="list-group-item" id="findType">
                             查询任务类型
                         </button>
-                        <li type="button" class="list-group-item" id="content">学习&nbsp;&nbsp;
+                        <li class="list-group-item">学习&nbsp;&nbsp;
                             &nbsp;<a href="/todo/updateType" id="updateType"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;&nbsp;</a>
                             <a href="/todo/deleteType" id="deleteType"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
                         </li>
-                        <li type="button" class="list-group-item" >学习</li>
-                        <li type="button" class="list-group-item">学习</li>
+                        <li  class="list-group-item"  >学习</li>
+                        <li  class="list-group-item">学习</li>
                     </div>
                 </div>
             </div>
