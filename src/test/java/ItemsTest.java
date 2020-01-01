@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.List;
+
 public class ItemsTest {
 //    //service测试
 //    @Test
@@ -38,5 +40,13 @@ public class ItemsTest {
         boolean b = bean.addTaskType(type);
         System.out.println(b);
     }
-
+    @Test
+    public void selectType(){
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        TaskTypeService bean = ac.getBean(TaskTypeService.class);
+        TaskType type = new TaskType();
+//        type.setType_name("工作");
+        List<TaskType> b = bean.selectType();
+        System.out.println(b);
+    }
 }

@@ -17,6 +17,7 @@ public class TaskTypeServiceImpl implements TaskTypeService {
         return true;
     }
 
+
     public boolean updateTaskType(TaskType taskType)
     {
         taskTypeDao.updateTaskType(taskType);
@@ -36,5 +37,10 @@ public class TaskTypeServiceImpl implements TaskTypeService {
     @Override
     public boolean deleteType(int type_id) {
         return taskTypeDao.deleteType(type_id);
+    }
+
+    @Override
+    public List<TaskType> selectType() {
+        return taskTypeDao.selectType();
     }
 }

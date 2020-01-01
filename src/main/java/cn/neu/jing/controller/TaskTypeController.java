@@ -7,10 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,13 +18,14 @@ import java.util.Map;
 @RequestMapping(path="/todo")
 @ResponseBody
 public class TaskTypeController {
-//    @Autowired
+    @Autowired
     private TaskTypeService taskTypeService;
 //请求映射，需要提供请求路径
     @ResponseBody
-    @RequestMapping(value = "/addType", method = RequestMethod.POST,produces = "application/json;charset=utf-8")
+    @RequestMapping(path = "/addType", method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     public String addTaskType(@RequestParam Map<String, Object> p) {
         String type = p.get("type").toString();
+//        String type = t.strip();
         Map<String,String > map = new HashMap<>();
         map.put("err_code","0");
         if (type.isEmpty()) {
@@ -60,13 +58,37 @@ public class TaskTypeController {
 
     //修改任务类型
     @ResponseBody
-    @RequestMapping(value = "/updateType", method = RequestMethod.POST,produces = "application/json;charset=utf-8")
+    @RequestMapping(path = "/updateType", method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     public String updateTaskType(@RequestParam Map<String, Object> p) {
         String s = p.get("content").toString();
-        
+
         //        taskTypeService.updateTaskType(taskType);
 //        TaskType type = taskTypeService.selectById(taskType.getType_id());
 //        model.addAttribute("type", type);
+        return "";
+    }
+    @ResponseBody
+    @RequestMapping(path="/findType",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
+    public String selectType(@RequestParam Map<String, Object> p){
+        System.out.println("1111111111111");
+        Map<String,String > map = new HashMap<>();
+        List<TaskType> list = taskTypeService.selectType();
+        System.out.println("11111111111");
+        System.out.println("查询成功了");
+        //        map.put("err_code","0");
+//        if(b){
+//            System.out.println("11111111111");
+//            map.put("err_code", "");
+//        }else{
+//            map.put("err_code", "1");
+//            map.put("err_msg", "查询失败，请重试");
+//        }
+//        ObjectMapper mapper = new ObjectMapper();
+//        try {
+//            mapper.writeValueAsString(map);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         return "";
     }
 

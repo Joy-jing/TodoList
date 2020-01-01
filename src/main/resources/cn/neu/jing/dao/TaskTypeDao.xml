@@ -10,6 +10,9 @@
         INSERT INTO task_type(type_name)
         VALUES (#{type_name});
     </insert>
+    <select id="selectType" resultType="TaskType">
+        select type_name from task_type;
+    </select>
 
     <delete id="deleteType" parameterType="int">
         delete from task_type,task where type_id=#{type_id};

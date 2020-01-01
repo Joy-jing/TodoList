@@ -50,6 +50,7 @@
             $("#addType").click(function () {
                 // alert("可以了");
                 let type = $("#type").val();
+                alert(type);
                 $.post("/todo/addType",{type:type},function (response) {
                     alert("。。。。。");
                     if (response.err_code=="1"){
@@ -65,12 +66,21 @@
                 let type = $("#content").val();
                 $.post("/todo/updateType",function (response) {
                     alert("修改成功 ");
-
-
                 })
-            })
+            });
 
+            $("#findType").click(function () {
+                alert("可以查询了");
+                $.get("/todo/findType",function (response) {
+                    let list = response.data.list;
+                    // $.each(list,function () {
+                    //
+                    // })
+                    alert("查询成功");
+                });
+            });
         });
+
 
     </script>
 </head>
@@ -81,7 +91,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Todo</label>
                 <div class="col-sm-6">
-                    <input type="text" id="title" class="form-control" name="title" placeholder="添加ToDo任务类型" required="required" autocomplete="off">
+                    <input type="text" id="title" class="form-control" name="title" placeholder="添加ToDo任务" required="required" autocomplete="off">
                 </div>
                 <div class="col-sm-1">
                     <button type="button" class="btn btn-info" id = "add">确定</button>
@@ -105,15 +115,15 @@
                 </div>
                 <div class="col-md-6">
                     <div class="list-group">
-                        <a href="#" class="list-group-item disabled">
-                            游戏
-                        </a>
-                        <a href="#" class="list-group-item" id="content">学习&nbsp;&nbsp;
+                        <button type="button" class="list-group-item" id="findType">
+                            查询任务类型
+                        </button>
+                        <li type="button" class="list-group-item" id="content">学习&nbsp;&nbsp;
                             &nbsp;<a href="/todo/updateType" id="updateType"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;&nbsp;</a>
                             <a href="/todo/deleteType" id="deleteType"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-                        </a>
-                        <a href="#" class="list-group-item" >学习</a>
-                        <a href="#" class="list-group-item">学习</a>
+                        </li>
+                        <li type="button" class="list-group-item" >学习</li>
+                        <li type="button" class="list-group-item">学习</li>
                     </div>
                 </div>
             </div>
