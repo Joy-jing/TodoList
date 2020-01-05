@@ -63,11 +63,19 @@ public class TaskController {
     }
 
     //删除任务
-    @RequestMapping(path = "/deleteTask")
-    public String deleteTask(int task_id) {
-        taskService.deleteTask(task_id);
-        return "";
-
+    @ResponseBody
+    @RequestMapping(value = "/deleteTask", method = {RequestMethod.GET}, produces = "application/json;charset=utf-8")
+    public String deleteTask(@RequestParam Map<String, Object> p) throws JsonProcessingException {
+        Map<String,String> map = new HashMap<>();
+        if(p.get("id")==null){
+            map.put("err_code","1");
+            map.put("err_msg","删除失败");
+        }else{
+            map.put("err_msg","删除成功");
+        }
+        ObjectMapper mapper = new ObjectMapper();
+        String s = mapper.writeValueAsString(map);
+        return s;
     }
     //查询全部任务
     @ResponseBody

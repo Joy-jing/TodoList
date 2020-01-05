@@ -131,13 +131,33 @@
                             "<th>"+endTime+"</th>\n" +
                             "<th>"+remark+"</th>\n" +
                             "<th><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></th>"+
-                            "<th><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></th>"+
+                            "<th><a href=\"/todo/deleteTask\" id=\"deleteTask\" onclick='deleteTask(this,id)'><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></a></th>"+
                             "<th></th>"+
                             "<th></th>"+
                             "</tr>");
                     }
                 });
             });
+            function deleteTask(obj,id)
+            {
+                alert("执行了吗");
+                alert(id);
+                var r=confirm("是否确认删除？");
+                alert("确认删除嘛");
+                if(r==true){
+                    //确定执行删除
+                    var id = id;
+                    $.get("todo/deleteTask?id="+id,function(data){});
+                    return true;
+                }
+            }
+            // $("#deleteTask").click(function () {
+            //     alert("删除任务");
+            //     var id=$("#task tr th:nth-child(1)")
+            //     $.post("/todo/deleteTask?id="+id,function () {
+            //
+            //     });
+            // })
         });
 
 
