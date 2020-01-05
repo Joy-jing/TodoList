@@ -34,7 +34,15 @@
 <!--        FROM task-->
 <!--    </select>-->
 
-
+<!--    分页sql语句-->
+    <!--查一共有多少条数据-->
+<!--    <select id="countIndex" resultType="int">-->
+<!--        select count(*) from task-->
+<!--  </select>-->
+<!--    &lt;!&ndash;查用户记录&ndash;&gt;-->
+<!--    <select id="showList" parameterType="int" resultMap="Task">-->
+<!--    select * from user limit #{index},#{pageSize}-->
+<!--    </select>-->
 
     <select id="todayTask" resultType="Task">
          select a.task_name,b.type_name

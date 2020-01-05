@@ -14,18 +14,25 @@ public class TaskServiceImpl implements TaskService {
     private TaskDao taskDao;
     @Override
     public boolean addTask(Task task) {
-        taskDao.addTask(task);
+        taskDao.addTask(task.getTaskId(),
+                task.getTaskName(),
+                task.getStartTime(),
+                task.getEndTime(),
+                task.getRemark(),
+                task.isTaskMajor(),
+                task.isTaskFinish(),
+                task.getTypeId());
         return true;
     }
     @Override
     public boolean updateTask(Task task) {
-        taskDao.updateTask(task);
+        taskDao.updateTask(task.getTaskName());
         return true;
 
     }
     @Override
-    public boolean deleteTask(int task_id) {
-        taskDao.deleteTask(task_id);
+    public boolean deleteTask(int taskId) {
+        taskDao.deleteTask(taskId);
         return true;
     }
     @Override
@@ -38,27 +45,37 @@ public class TaskServiceImpl implements TaskService {
     }
     @Override
     public boolean addTodayTask(Task task) {
-        taskDao.addTodayTask(task);
+        taskDao.addTodayTask(task.getTaskId(),task.getTaskName());
         return true;
 
     }
     @Override
     public boolean addMajorTask(Task task) {
-        taskDao.addMajorTask(task);
+        taskDao.addMajorTask(task.getTaskId(),task.getTaskName());
         return true;
 
     }
     @Override
-    public void deleteTodayTask(int task_id) {
-        taskDao.deleteTodayTask(task_id);
+    public void deleteTodayTask(int taskId) {
+        taskDao.deleteTodayTask(taskId);
     }
     @Override
-    public void deleteMajorTask(int task_id) {
-        taskDao.deleteMajorTask(task_id);
+    public void deleteMajorTask(int taskId) {
+        taskDao.deleteMajorTask(taskId);
     }
 
     @Override
-    public Task selectById(int task_id) {
-        return taskDao.selectById(task_id);
+    public Task selectById(int taskId) {
+        return taskDao.selectById(taskId);
+    }
+
+    @Override
+    public List<Task> showList(int index, int pageSize) {
+        return taskDao.showList(index, pageSize);
+    }
+
+    @Override
+    public int countIndex() {
+        return taskDao.countIndex();
     }
 }

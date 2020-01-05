@@ -37,6 +37,10 @@
         <property name="dataSource" ref="dataSource"/>
         <!--扫描pojo包，给包下所有pojo对象起别名-->
         <property name="typeAliasesPackage" value="cn.neu.jing.entity"/>
+        <!--打印sql-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+        <!-- 自动扫描mapping.xml文件 -->
+        <property name="mapperLocations" value="classpath:cn/neu/jing/dao/*.xml"></property>
     </bean>
 
     <!--扫描接口包路径，生成包下所有接口的代理对象，并且放入spring容器中-->
@@ -73,4 +77,6 @@
         <aop:advisor advice-ref="advice" pointcut-ref="pointcut"/>
     </aop:config>
     <!--service层配置文件结束-->
+
+
 </beans>

@@ -30,32 +30,17 @@ public class TaskTypeController {
         Map<String,String > map = new HashMap<>();
         map.put("err_code","0");
         if (type.isEmpty()) {
-            map.put("err_code", "1");
+            map.put("err_code", "2");
             map.put("err_msg", "任务名称不能为空");
         } else {
             TaskType task = new TaskType();
-//            int id = task.getType_id();
-//            int type_id = id+1;
-//            task.setType_id(type_id);
-            task.setType_name(type);
-            System.out.println("===========================");
-            System.out.println(task);
-            System.out.println("******************************");
-
+            task.setTypeName(type);
             boolean b = taskTypeService.addTaskType(task);
-            if (b) {
-                map.put("err_code", "");
-            } else {
-                map.put("err_code", "1");
-                map.put("err_msg", "添加失败，请重试");
-            }
+            map.put("suc_code", "1");
+            map.put("suc_msg", "添加成功");
         }
         ObjectMapper mapper = new ObjectMapper();
-//        try {
-            String s = mapper.writeValueAsString(map);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        String s = mapper.writeValueAsString(map);
         return s;
     }
 
@@ -65,27 +50,21 @@ public class TaskTypeController {
     public String updateTaskType(@RequestParam Map<String, Object> p) {
         String s = p.get("content").toString();
 
-        //        taskTypeService.updateTaskType(taskType);
-//        TaskType type = taskTypeService.selectById(taskType.getType_id());
-//        model.addAttribute("type", type);
         return "";
     }
     @ResponseBody
     @RequestMapping(path="/findType",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
-    public TaskType selectType(@RequestParam Map<String, Object> p){
-        System.out.println("===========");
-        System.out.println("paramsMap->"+p.get("id").toString());
-        int id = Integer.parseInt(p.get("id").toString());
-        TaskType list = taskTypeService.selectById(id);
-
-
-        return list;
+    public String selectType(@RequestParam Map<String, Object> p) throws JsonProcessingException {
+        List<TaskType> list = taskTypeService.selectType();
+        ObjectMapper mapper = new ObjectMapper();
+        String s = mapper.writeValueAsString(list);
+        return s;
     }
 
     //查询类型下的任务,需要传递类型？？
-    @RequestMapping(path="/findType")
-    public String selectTaskType(Model model, int type_id) {
-        List<TaskType> list = taskTypeService.selectTaskType(type_id);
+    @RequestMapping(path="/findTaskType")
+    public String selectTaskType(Model model, int typeId) {
+        List<TaskType> list = taskTypeService.selectTaskType(typeId);
         model.addAttribute("list",list);
         return "";
     }
@@ -96,10 +75,20 @@ public class TaskTypeController {
         return "";
     }
 
-    @RequestMapping(path ="/deleteType")
-    public String deleteType(int type_id) {
-        taskTypeService.deleteType(type_id);
-        return "";
-//        return taskTypeDao.deleteType(type_id);
+    @ResponseBody
+    @RequestMapping(path ="/deleteType", method = RequestMethod.GET,produces = "application/json;charset=utf-8")
+    public String deleteType(@RequestParam Map<String, Object> p) throws JsonProcessingException {
+        System.out.println(p.get("id"));
+        Map<String,String> map = new HashMap<>();
+        if(p.get("id")==null){
+            map.put("err_code","1");
+            map.put("err_msg","删除失败");
+        }else{
+            map.put("err_msg","删除成功");
+        }
+        ObjectMapper mapper = new ObjectMapper();
+        String s = mapper.writeValueAsString(map);
+
+        return s;
     }
 }

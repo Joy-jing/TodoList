@@ -6,59 +6,58 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 public class Task {
-    private int task_id;
-    private String task_name;
-    private Timestamp start_time;
-    private Date end_time;
+    private int taskId;
+    private String taskName;
+    private Timestamp startTime;
+    private Date endTime;
     private String remark;
-    private boolean task_major;
-    private boolean task_finish;
-    private int type_id=1;
+    private boolean taskMajor;
+    private boolean taskFinish;
 
     @Override
     public String toString() {
         return "Task{" +
-                "task_id=" + task_id +
-                ", task_name='" + task_name + '\'' +
-                ", start_time=" + start_time +
-                ", end_time=" + end_time +
+                "taskId=" + taskId +
+                ", taskName='" + taskName + '\'' +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
                 ", remark='" + remark + '\'' +
-                ", task_major=" + task_major +
-                ", task_finish=" + task_finish +
-                ", type_id=" + type_id +
+                ", taskMajor=" + taskMajor +
+                ", taskFinish=" + taskFinish +
+                ", typeId=" + typeId +
                 '}';
     }
 
-    public int getTask_id() {
-        return task_id;
+    public int getTaskId() {
+        return taskId;
     }
 
-    public void setTask_id(int task_id) {
-        this.task_id = task_id;
+    public void setTaskId(int taskId) {
+        this.taskId = taskId;
     }
 
-    public String getTask_name() {
-        return task_name;
+    public String getTaskName() {
+        return taskName;
     }
 
-    public void setTask_name(String task_name) {
-        this.task_name = task_name;
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
     }
 
-    public Timestamp getStart_time() {
-        return start_time;
+    public Timestamp getStartTime() {
+        return startTime;
     }
 
-    public void setStart_time(Timestamp start_time) {
-        this.start_time = start_time;
+    public void setStartTime(Timestamp startTime) {
+        this.startTime = startTime;
     }
 
-    public Date getEnd_time() {
-        return end_time;
+    public Date getEndTime() {
+        return endTime;
     }
 
-    public void setEnd_time(Date end_time) {
-        this.end_time = end_time;
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
     public String getRemark() {
@@ -69,27 +68,31 @@ public class Task {
         this.remark = remark;
     }
 
-    public boolean isTask_major() {
-        return task_major;
+    public boolean isTaskMajor() {
+        return taskMajor;
     }
 
-    public void setTask_major(boolean task_major) {
-        this.task_major = task_major;
+    public void setTaskMajor(boolean taskMajor) {
+        this.taskMajor = taskMajor;
     }
 
-    public boolean isTask_finish() {
-        return task_finish;
+    public boolean isTaskFinish() {
+        return taskFinish;
     }
 
-    public void setTask_finish(boolean task_finish) {
-        this.task_finish = task_finish;
+    public void setTaskFinish(boolean taskFinish) {
+        this.taskFinish = taskFinish;
     }
 
-    public int getType_id() {
-        return type_id;
+    public int getTypeId() {
+        return typeId;
     }
 
-    public void setType_id(int type_id) {
-        this.type_id = type_id;
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
     }
+
+    private int typeId=1;
+
+
 }

@@ -1,4 +1,5 @@
 import cn.neu.jing.dao.TaskTypeDao;
+import cn.neu.jing.entity.Task;
 import cn.neu.jing.entity.TaskType;
 import cn.neu.jing.service.TaskTypeService;
 import org.junit.Test;
@@ -28,7 +29,7 @@ public class ItemsTest {
 //        从容器中拿到所需的dao的代理对象
         TaskTypeService bean = ac.getBean(TaskTypeService.class);
         TaskType type = bean.selectById(2);
-        System.out.println(type.getType_name());
+        System.out.println(type.getTypeName());
     }
 
     @Test
@@ -36,7 +37,7 @@ public class ItemsTest {
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
         TaskTypeService bean = ac.getBean(TaskTypeService.class);
         TaskType type = new TaskType();
-        type.setType_name("工作");
+        type.setTypeName("工作");
         boolean b = bean.addTaskType(type);
         System.out.println(b);
     }
@@ -44,9 +45,11 @@ public class ItemsTest {
     public void selectType(){
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
         TaskTypeService bean = ac.getBean(TaskTypeService.class);
-        TaskType type = new TaskType();
 //        type.setType_name("工作");
-        List<TaskType> b = bean.selectType();
-        System.out.println(b);
+        List<TaskType> list = bean.selectType();
+        System.out.println(list);
+        for (TaskType taskType : list) {
+            System.out.println(taskType.getTypeName());
+        }
     }
 }

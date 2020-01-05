@@ -1,6 +1,7 @@
 package cn.neu.jing.service;
 
 import cn.neu.jing.entity.Task;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -35,4 +36,11 @@ public interface TaskService {
 
     //查询指定任务的ID
     Task selectById(int task_id);
+
+
+    //分页显示所有用户信息
+    List<Task> showList(@Param("index")int index, @Param("pageSize")int pageSize);
+    //计算数据总数
+    int countIndex();
+
 }

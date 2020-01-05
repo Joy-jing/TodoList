@@ -6,6 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,31 +25,37 @@
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- 分页插件 -->
+<%--    <link rel="stylesheet" href="<%=basePath%>plugs/bootstrap-table/bootstrap-table.min.css">--%>
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.15.4/bootstrap-table.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.15.4/bootstrap-table.min.js"></script>
+<%--    <script type="text/javascript" src="<%=basePath%>plugs/bootstrap-table/bootstrap-table.min.js"></script>--%>
+<%--    <script type="text/javascript" src="<%=basePath%>plugs/bootstrap-table/bootstrap-table-locale-all.min.js"></script>--%>
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.15.4/bootstrap-table-locale-all.min.js"></script>
     <style>
         .text{text-align:center;}
     </style>
     <script>
         $(document).ready(function(){
             $("#add").click(function () {
-                // alert("我被电击了");
                 let title = $("#title").val();
-                // alert(title);
                 $.post("/todo/addTask",{title:title},function (response) {
-                    alert("到这里了吗");
-                    if(response.err_code == 1){
-                        alert(response.err_msg);
+                    console.log(response);
+                    if(response.err_code == 2){
                         $("#err").html(response.err_msg);
                     }else{
-                        $("#task").html("<tr>\n" +
-                            "                    <th>title</th>\n" +
-                            "                    <th>开始时间</th>\n" +
-                            "                    <th>结束时间</th>\n" +
-                            "                    <th>备注</th>\n" +
-                            "                    <th>修改</th>\n" +
-                            "                    <th>删除</th>\n" +
-                            "                    <th>今日&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"glyphicon glyphicon-calendar\" aria-hidden=\"true\"></span></th>\n" +
-                            "                    <th>重要&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span></th>\n" +
-                            "                </tr>");
+                        var time = new Date();
+                        // time1 = time.toLocaleString( );
+                        $("#task:last").append("<tr>\n" +
+                            "<th>"+title+"</th>\n" +
+                            "<th>"+time.toLocaleString()+"</th>\n" +
+                            "<th>结束时间</th>\n" +
+                            "<th>null</th>\n" +
+                            "<th>修改</th>\n" +
+                            "<th>删除</th>\n" +
+                            "<th>今日&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"glyphicon glyphicon-calendar\" aria-hidden=\"true\"></span></th>\n" +
+                            "<th>重要&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span></th>\n" +
+                            "</tr>");
                     }
                 })
             });
@@ -51,17 +63,29 @@
                 let type = $("#type").val();
                 $.post("/todo/addType",{type:type},function (response) {
                     console.log(response);
-
-                    if (response.err_code=1){
-                        $("#content:last").append("<li class=\"list-group-item\">response.data&nbsp;&nbsp;\n" +
-                            "                            &nbsp;<a href=\"/todo/updateType\" id=\"updateType\"><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>&nbsp;&nbsp;</a>\n" +
-                            "                            <a href=\"/todo/deleteType\" id=\"deleteType\"><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></a>\n" +
-                            "                        </li>");
+                    if (response.err_code==0){
+                        $("#content:last").append("<li class=\"list-group-item\">"+type+"&nbsp;&nbsp;" +
+                            "&nbsp;<a href=\"/todo/updateType\" id=\"updateType\"><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>&nbsp;&nbsp;</a>\n" +
+                            "<a href=\"/todo/deleteType\" id=\"deleteType\"><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></a>\n" +
+                            "</li>");
                     }else{
                         alert(response.err_msg);
                     }
                 });
             });
+            //删除任务类型
+            function dele(obj,id){
+                alert("执行了吗");
+                alert(id);
+                var r=confirm("是否确认删除？");
+                alert("确认删除嘛");
+                if(r==true){
+                    //确定执行删除
+                    var id = id;
+                    $.get("todo/deleteType?id="+id,function(data){});
+                    return true;
+                }
+            }
 
             $("#updateType").click(function () {
                 alert("可以修改了");
@@ -72,13 +96,46 @@
             });
 
             $("#findType").click(function () {
-                // alert("可以查询了");
                 $.get("/todo/findType",function (response) {
-                    let list = response.data.list;
-                    // $.each(list,function () {
-                    //
-                    // })
-                    alert("查询成功");
+                    console.log(response);
+                    $("#content li").html("");
+                    for(var i = 0;i<response.length;i++){
+                        var p = response[i];
+                        var id = p["typeId"];
+                        var name = p["typeName"];
+                        $("#content").append("<li class=\"list-group-item\">"+name+"<a href=\"/todo/updateType\" id=\"updateType\">" +
+                            "<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>&nbsp;&nbsp;</a>\n" +
+                            "<a href=\"/todo/deleteType\" id=\"deleteType\" onclick='dele(p,id)'>" +
+                            "<span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></a></li>");
+
+                    }
+                });
+            });
+            $("#findAll").click(function () {
+                $.get("/todo/findAll",function (response) {
+                    console.log(response);
+                    for(var i = 0;i<response.length;i++){
+                        var task = response[i];
+                        var id = task["taskId"];
+                        var name = task["taskName"];
+                        var startTime = task["startTime"];
+                        var endTime = task["endTime"];
+                        var remark = task["remark"];
+                        // var taskMajor = task.taskMajor();
+                        // var taskFinish = task.taskFinish();
+                        // var typeId = task.typeId();
+                        $("#task:last").append("<tr>\n" +
+                            "<th>"+id+"</th>\n" +
+                            "<th>"+name+"</th>\n" +
+                            "<th>"+startTime+"</th>\n" +
+                            "<th>"+endTime+"</th>\n" +
+                            "<th>"+remark+"</th>\n" +
+                            "<th><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></th>"+
+                            "<th><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></th>"+
+                            "<th></th>"+
+                            "<th></th>"+
+                            "</tr>");
+                    }
                 });
             });
         });
@@ -120,19 +177,15 @@
                         <button type="button" class="list-group-item" id="findType">
                             查询任务类型
                         </button>
-                        <li class="list-group-item">学习&nbsp;&nbsp;
-                            &nbsp;<a href="/todo/updateType" id="updateType"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;&nbsp;</a>
-                            <a href="/todo/deleteType" id="deleteType"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-                        </li>
-                        <li  class="list-group-item"  >学习</li>
-                        <li  class="list-group-item">学习</li>
+<%--                        <li></li>--%>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-8">任务列表
+        <div class="col-md-8"><button type="button" id="findAll">任务列表</button>
             <table id = "task"  class="table table-bordered" style="text-align:center">
                 <tr>
+                    <th>任务id</th>
                     <th>任务名称</th>
                     <th>开始时间</th>
                     <th>结束时间</th>
@@ -142,43 +195,56 @@
                     <th>今日&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></th>
                     <th>重要&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-star" aria-hidden="true"></span></th>
                 </tr>
-                <tr>
-                    <th>任务名称</th>
-                    <th>开始时间</th>
-                    <th>结束时间</th>
-                    <th>备注</th>
-                    <th>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></th>
-                    <th>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
-                    <th>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></th>
-                    <th>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-star" aria-hidden="true"></span></th>
-                </tr>
-                <tr>
-                    <th>任务名称</th>
-                    <th>开始时间</th>
-                    <th>结束时间</th>
-                    <th>备注</th>
-                    <th>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></th>
-                    <th>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
-                    <th>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></th>
-                    <th>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-star" aria-hidden="true"></span></th>
-                </tr>
             </table>
-            <nav aria-label="Page navigation" >
-                <ul class="pagination pull-right">
+            <!--分页-->
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <!--第一页-->
                     <li>
+                        <c:choose>
+                        <c:when test="${pageUtil.pageIndex - 1 > 0}">
+                        <a href="/todo/findAll?pageIndex=1" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                        </c:when>
+                        <c:otherwise>
+                    <li class="disabled">
                         <a href="#" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
+                    </c:otherwise>
+                    </c:choose>
+                    </li>
+                    <!--页数-->
+                    <c:forEach var = "i" begin="1" end="${pageUtil.pageCount}" step="1">
+                        <c:choose>
+                            <c:when test="${pageUtil.pageIndex==i}">
+                                <li class="active">
+                                    <a href="/todo/findAll?pageIndex=${i}">${i}</a>
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><a href="/todo/findAll?pageIndex=${i}">${i}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                    <!--尾页-->
                     <li>
+                        <c:choose>
+                        <c:when test="${pageUtil.pageIndex  < pageUtil.pageCount}">
+                        <a href="/todo/findAll?pageIndex=${pageUtil.pageCount}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                        </c:when>
+                        <c:otherwise>
+                    <li class="disabled">
                         <a href="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
+                    </li>
+                    </c:otherwise>
+                    </c:choose>
                     </li>
                 </ul>
             </nav>

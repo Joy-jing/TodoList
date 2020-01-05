@@ -20,8 +20,8 @@
 
     <update id="updateTaskType">
         UPDATE task_type
-        SET TYPE_NAME = #{typeName}
-        WHERE  type_id = #{typeId};
+        SET TYPE_NAME = #{type_name}
+        WHERE  type_id = #{type_d};
     </update>
 
     <select id="selectTaskType" resultType="TaskType">

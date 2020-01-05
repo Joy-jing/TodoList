@@ -28,12 +28,6 @@
     </bean>
 <!--    释放静态资源-->
     <mvc:default-servlet-handler/>
-<!--    &lt;!&ndash; 注册自定义类型转换器 &ndash;&gt;-->
-<!--    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">-->
-<!--        <property name="converters">-->
-<!--            <set>-->
-<!--                <bean class="cn.neu.jing.controller"/>-->
-<!--            </set>-->
-<!--        </property>-->
-<!--    </bean>-->
+
+
 </beans>
