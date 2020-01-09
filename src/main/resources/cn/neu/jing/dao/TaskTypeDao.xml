@@ -15,13 +15,13 @@
     </select>
 
     <delete id="deleteType" >
-        delete from task_type,task where type_id=#{type_id};
+        delete from task_type where type_id=#{type_id};
     </delete>
 
     <update id="updateTaskType">
         UPDATE task_type
         SET TYPE_NAME = #{type_name}
-        WHERE  type_id = #{type_d};
+        WHERE  type_id = #{type_id};
     </update>
 
     <select id="selectTaskType" resultType="TaskType">

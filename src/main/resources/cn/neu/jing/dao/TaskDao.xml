@@ -19,12 +19,12 @@
 
     <update id="updateTask" parameterType="Task">
         UPDATE task
-        SET task_name = #{task_name}, end_time=#{end_time},remark=#{remark},task_major=#{task_major},task_finish=#{task_finish},type_id=#{type_id}
-        WHERE  task_id = #{taskId}
+        SET task_name = #{task_name},remark=#{remark}
+        WHERE  task_id = #{task_id}
     </update>
 
     <delete id="deleteTask" parameterType="Task">
-        delete from task_type where type_id=#{type_id};
+        delete from task where task_id=#{task_id};
     </delete>
     <!--两表联合??-->
 <!--    <select id="findAll" resultType="Task">-->
@@ -34,28 +34,21 @@
 <!--        FROM task-->
 <!--    </select>-->
 
-<!--    分页sql语句-->
-    <!--查一共有多少条数据-->
-<!--    <select id="countIndex" resultType="int">-->
-<!--        select count(*) from task-->
-<!--  </select>-->
-<!--    &lt;!&ndash;查用户记录&ndash;&gt;-->
-<!--    <select id="showList" parameterType="int" resultMap="Task">-->
-<!--    select * from user limit #{index},#{pageSize}-->
-<!--    </select>-->
+<!--分页sql语句-->
+<!--查一共有多少条数据-->
+    <select id="countIndex" resultType="int">
+        select count(*) from task
+  </select>
+<!-- 分页查询记录-->
+    <select id="showList" parameterType="int" resultType="Task">
+    select * from task limit #{index},#{pageSize}
+    </select>
 
     <select id="todayTask" resultType="Task">
          select a.task_name,b.type_name
          from task a left join task_type b on a.type_id=b.type_id
          left join  today_task  c on a.task_id = c.task_id and c.time = #{time};
     </select>
-
-    <!--    ?-->
-<!--    <select id="addTodayTask">-->
-<!--         select a.task_name,b.type_name c.task_id-->
-<!--         from task a left join task_type b on a.type_id=b.type_id-->
-<!--         left join  today_task  c on a.task_id = c.task_id and c.time = #{time};-->
-<!--    </select>-->
 
     <update id="addMajorTask" parameterType="Task">
         update task

@@ -20,7 +20,7 @@ public class TaskTypeServiceImpl implements TaskTypeService {
 
     public boolean updateTaskType(TaskType taskType)
     {
-        taskTypeDao.updateTaskType(taskType.getTypeName());
+        taskTypeDao.updateTaskType(taskType.getTypeId(),taskType.getTypeName());
         return true;
     }
     @Override

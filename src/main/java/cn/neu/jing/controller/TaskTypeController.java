@@ -46,11 +46,29 @@ public class TaskTypeController {
 
     //修改任务类型
     @ResponseBody
-    @RequestMapping(path = "/updateType", method = RequestMethod.POST,produces = "application/json;charset=utf-8")
-    public String updateTaskType(@RequestParam Map<String, Object> p) {
-        String s = p.get("content").toString();
-
-        return "";
+    @RequestMapping(path = "/updateType/{id}", method = RequestMethod.POST,produces = "application/json;charset=utf-8")
+    public String updateTaskType(@RequestParam Map<String, Object> p,@PathVariable("id")String id) throws JsonProcessingException {
+        String taskName = p.get("typeName").toString();
+        int i = Integer.parseInt(id);
+        Map<String, String> response = new HashMap<>();
+        response.put("err_code", "0");
+        if(taskName.isEmpty()){
+            response.put("err_code", "2");
+            response.put("err_msg", "任务类型名称不能为空");
+        }else {
+            TaskType type = new TaskType();
+            type.setTypeName(taskName);
+            type.setTypeId(i);
+            if (taskTypeService.updateTaskType(type)) {
+                response.put("err_code", "1");
+            } else {
+                response.put("err_code", "2");
+                response.put("err_msg", "添加失败，请重试");
+            }
+        }
+        ObjectMapper mapper = new ObjectMapper();
+        String s = mapper.writeValueAsString(response);
+        return s;
     }
     @ResponseBody
     @RequestMapping(path="/findType",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
@@ -76,19 +94,19 @@ public class TaskTypeController {
     }
 
     @ResponseBody
-    @RequestMapping(path ="/deleteType", method = RequestMethod.GET,produces = "application/json;charset=utf-8")
-    public String deleteType(@RequestParam Map<String, Object> p) throws JsonProcessingException {
-        System.out.println(p.get("id"));
-        Map<String,String> map = new HashMap<>();
-        if(p.get("id")==null){
-            map.put("err_code","1");
-            map.put("err_msg","删除失败");
+    @RequestMapping(path ="/deleteType/{id}", method = RequestMethod.POST,produces = "application/json;charset=utf-8")
+    public String deleteType(@PathVariable("id")String id) throws JsonProcessingException {
+        Map<String,String> info = new HashMap<>();
+        int id1 = Integer.parseInt(id);
+        if(taskTypeService.deleteType(id1)){
+            info.put("err_code","1");
+            info.put("err_msg","删除成功");
         }else{
-            map.put("err_msg","删除成功");
+            info.put("err_code","2");
+            info.put("err_msg","删除失败");
         }
         ObjectMapper mapper = new ObjectMapper();
-        String s = mapper.writeValueAsString(map);
-
+        String s = mapper.writeValueAsString(info);
         return s;
     }
 }

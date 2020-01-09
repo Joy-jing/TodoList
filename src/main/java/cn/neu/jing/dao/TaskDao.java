@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /*
 与数据库打交道
@@ -22,16 +23,21 @@ public interface TaskDao {
               @Param("type_id") int typeId
               );
     //修改任务
-      boolean updateTask(
-              @Param("task_id") int taskId,
-              @Param("task_name") String taskName,
-              @Param("start_time") Date startTime,
-              @Param("end_time") Date endTime,
-              @Param("remark") String remark,
-              @Param("task_major") int taskMajor,
-              @Param("task_finish") int taskFinish,
-              @Param("type_id") int typeId
-      );
+      boolean updateTask(@Param("task_id") int taskId,
+                         @Param("task_name") String taskName,
+                         @Param("start_time") Date startTime,
+                         @Param("end_time") Date endTime,
+                         @Param("remark") String remark,
+                         @Param("task_major") boolean taskMajor,
+                         @Param("task_finish") boolean taskFinish,
+                         @Param("type_id") int typeId);
+//              @Param("task_id") int taskId,
+//              @Param("start_time") Date startTime,
+//              @Param("end_time") Date endTime,
+//              @Param("task_major") int taskMajor,
+//              @Param("task_finish") int taskFinish,
+//              @Param("type_id") int typeId
+//      );
     //删除任务
       boolean deleteTask(
               @Param("task_id") int taskId
@@ -69,8 +75,6 @@ public interface TaskDao {
     //查询指定任务的名称
       Task selectById(@Param("task_id") int taskId);
 
-    Task updateTask(@Param("task_name") String taskName);
-
     Task addMajorTask(@Param("task_id") int taskId,
                        @Param("task_name") String taskName);
 
@@ -78,6 +82,7 @@ public interface TaskDao {
                       @Param("task_name") String taskName);
 
     //分页显示所有用户信息
+//    List<Task> showList(Map<String,Object> map);
     List<Task> showList(@Param("index")int index,@Param("pageSize")int pageSize);
     //计算数据总数
     int countIndex();

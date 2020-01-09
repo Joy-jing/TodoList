@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class TaskServiceImpl implements TaskService {
@@ -24,16 +25,23 @@ public class TaskServiceImpl implements TaskService {
                 task.getTypeId());
         return true;
     }
+
     @Override
     public boolean updateTask(Task task) {
-        taskDao.updateTask(task.getTaskName());
-        return true;
+
+        return taskDao.updateTask(task.getTaskId(),
+                task.getTaskName(),
+                task.getStartTime(),
+                task.getEndTime(),
+                task.getRemark(),
+                task.isTaskMajor(),
+                task.isTaskFinish(),
+                task.getTypeId());
 
     }
     @Override
     public boolean deleteTask(int taskId) {
-        taskDao.deleteTask(taskId);
-        return true;
+        return taskDao.deleteTask(taskId);
     }
     @Override
     public List<Task> findAll() {
@@ -69,10 +77,10 @@ public class TaskServiceImpl implements TaskService {
         return taskDao.selectById(taskId);
     }
 
-    @Override
-    public List<Task> showList(int index, int pageSize) {
-        return taskDao.showList(index, pageSize);
+    public List<Task> showlist(int index, int pageSize) {
+        return taskDao.showList(index,pageSize);
     }
+
 
     @Override
     public int countIndex() {

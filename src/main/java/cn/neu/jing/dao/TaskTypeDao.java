@@ -13,7 +13,7 @@ public interface TaskTypeDao {
      );
     //修改任务类型
      boolean updateTaskType(
-//             @Param("type_id") int typeId,
+             @Param("type_id") int typeId,
              @Param("type_name") String typeName
      );
     //查询类型下的任务,需要传递类型？？
