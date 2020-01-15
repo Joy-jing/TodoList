@@ -25,8 +25,16 @@
     </update>
 
     <select id="selectTaskType" resultType="TaskType">
-        SELECT task_name,start_time,end_time,remark,task_major,task_finish,type_name
-        FROM task a LEFT JOIN  task_type b ON a.type_id = b.type_id;
+        SELECT a.task_id,a.task_name,a.start_time,a.end_time,a.remark
+        FROM task a LEFT JOIN  task_type b ON a.type_id = b.type_id
+        WHERE b.type_id=#{type_id};
+   </select>
+
+    <select id="showList" resultType="TaskType">
+        SELECT a.task_id,a.task_name,a.start_time,a.end_time,a.remark
+        FROM task a LEFT JOIN  task_type b ON a.type_id = b.type_id
+        WHERE b.type_id=#{type_id}
+        LIMIT #{start},#{pageSize};
    </select>
 
 </mapper>

@@ -16,7 +16,7 @@ public interface TaskTypeDao {
              @Param("type_id") int typeId,
              @Param("type_name") String typeName
      );
-    //查询类型下的任务,需要传递类型？？
+    //查询类型下的任务,需要传递类型
      List<TaskType> selectTaskType(
              @Param("type_id") int typeId
      );
@@ -25,4 +25,6 @@ public interface TaskTypeDao {
      boolean deleteType(@Param("type_id") int typeId);
 
     List<TaskType> selectType();
+    List<TaskType> showList(@Param("type_id") int typeId,@Param("start") int start,@Param("pageSize") int pageSize);
+
 }

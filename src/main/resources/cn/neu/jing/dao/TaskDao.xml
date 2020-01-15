@@ -34,15 +34,6 @@
 <!--        FROM task-->
 <!--    </select>-->
 
-<!--分页sql语句-->
-<!--查一共有多少条数据-->
-    <select id="countIndex" resultType="int">
-        select count(*) from task
-  </select>
-<!-- 分页查询记录-->
-    <select id="showList" parameterType="int" resultType="Task">
-    select * from task limit #{index},#{pageSize}
-    </select>
 
     <select id="todayTask" resultType="Task">
          select a.task_name,b.type_name

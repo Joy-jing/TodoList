@@ -82,7 +82,6 @@
             var id = "";
             id += $(obj).parent("th").parent("tr").find("th:first-child").text();
             $("#task_update_btn").click(function () {
-
                 let taskName = $("#task_update").val();
                 let remark = $("#remark_update").val();
                 $("#taskUpdateModal").modal('hide');
@@ -144,6 +143,36 @@
                 }
             })
         }
+        function selectTaskType(obj){
+            var id = "";
+            id += $(obj).parent("th").parent("tr").find("th:first-child").text();
+            $.get("/todo/findTaskType/" + id, function (response) {
+                console.log(response);
+                alert("...");
+                $("#task tr").not(':eq(0)').empty();
+                for (var i = 0; i < response.length; i++) {
+                    var task = response[i];
+                    var id = task["taskId"];
+                    var name = task["taskName"];
+                    var startTime = task["startTime"];
+                    var endTime = task["endTime"];
+                    var remark = task["remark"];
+                    $("#task").append("<tr>\n" +
+                        "<th id='id'>" + id + "</th>\n" +
+                        "<th>" + name + "</th>\n" +
+                        "<th>" + startTime + "</th>\n" +
+                        "<th>" + endTime + "</th>\n" +
+                        "<th>" + remark + "</th>\n" +
+                        "<th><a class='btn btn-default' onclick='updateTask(this)' data-toggle=\"modal\" data-target='#taskUpdateModal'><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></a></span></th>" +
+                        "<th><a class='btn btn-default' onclick='deleteTask(this)'><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></a></th>" +
+                        "<th><a class='btn btn-default' onclick='addToday(this)' id='b3'><span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span></a>" +
+                        "<a class='btn btn-default' onclick='delToday(this)' id='b4'><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></a></th>" +
+                        "<th><a class='btn btn-default' onclick='addMajor(this)' id='b1'><span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span></a>" +
+                        "<a class='btn btn-default' onclick='delMajor(this)' id='b2'><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></a></th>" +
+                        "</tr>");
+                }
+            });
+        }
         $(document).ready(function () {
             $("#add").click(function () {
                 let title = $("#title").val();
@@ -195,17 +224,43 @@
                         var name = p["typeName"];
                         $("#t1").append("<tr>\n" +
                             "<th>"+id+"</th>\n" +
-                            "<th>"+name+"</th>" +
+                            "<th><a onclick='selectTaskType(this)'</a>"+name+"</th>" +
                             "<th><a class='btn btn-default' onclick='updateType(this)' data-toggle=\"modal\" data-target='#typeUpdateModal'>" +
-                            "<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>&nbsp;&nbsp;</a>\n</th>"+
+                            "<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>&nbsp;</a>\n</th>"+
                             "<th><a class='btn btn-default' onclick='deleteType(this)'>" +
-                            "<span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span>&nbsp;&nbsp;</a>\n</th>"+
+                            "<span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span>&nbsp;</a>\n</th>"+
                             "</tr>");
                     }
                 });
             });
+            // $("#findAll").click(function () {
+            //     $.get("/todo/findAll", function (response) {
+            //         console.log(response);
+            //         for (var i = 0; i < response.length; i++) {
+            //             var task = response[i];
+            //             var id = task["taskId"];
+            //             var name = task["taskName"];
+            //             var startTime = task["startTime"];
+            //             var endTime = task["endTime"];
+            //             var remark = task["remark"];
+            //             $("#task:last").append("<tr>\n" +
+            //                 "<th id='id'>" + id + "</th>\n" +
+            //                 "<th>" + name + "</th>\n" +
+            //                 "<th>" + startTime + "</th>\n" +
+            //                 "<th>" + endTime + "</th>\n" +
+            //                 "<th>" + remark + "</th>\n" +
+            //                 "<th><a class='btn btn-default' onclick='updateTask(this)' data-toggle=\"modal\" data-target='#taskUpdateModal'><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></a></span></th>" +
+            //                 "<th><a class='btn btn-default' onclick='deleteTask(this)'><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></a></th>" +
+            //                 "<th><a class='btn btn-default' onclick='addToday(this)' id='b3'><span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span></a>" +
+            //                 "<a class='btn btn-default' onclick='delToday(this)' id='b4'><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></a></th>" +
+            //                 "<th><a class='btn btn-default' onclick='addMajor(this)' id='b1'><span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span></a>" +
+            //                 "<a class='btn btn-default' onclick='delMajor(this)' id='b2'><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></a></th>" +
+            //                 "</tr>");
+            //         }
+            //     });
+            // });
             $("#findAll").click(function () {
-                $.get("/todo/findAll", function (response) {
+                $.get("/todo/findPage", function (response) {
                     console.log(response);
                     $("#task tr").not(':eq(0)').empty();
                     for (var i = 0; i < response.length; i++) {
@@ -231,6 +286,7 @@
                     }
                 });
             });
+
         });
     </script>
 </head>

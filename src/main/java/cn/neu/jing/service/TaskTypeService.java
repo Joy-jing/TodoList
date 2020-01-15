@@ -12,7 +12,7 @@ public interface TaskTypeService {
      boolean updateTaskType(TaskType taskType);
     //查询类型下的任务,需要传递类型？？
      List<TaskType> selectTaskType(int typeId);
-
+     List<TaskType> showList(int typeId,int start,int pageSize);
     //根据id查询类型名称
      TaskType selectById(int typeId);
     boolean deleteType(int typeId);

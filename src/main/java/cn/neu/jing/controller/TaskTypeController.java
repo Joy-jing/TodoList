@@ -3,6 +3,7 @@ package cn.neu.jing.controller;
 import cn.neu.jing.entity.Task;
 import cn.neu.jing.entity.TaskType;
 import cn.neu.jing.service.TaskTypeService;
+import cn.neu.jing.util.Page;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,17 +75,44 @@ public class TaskTypeController {
     @RequestMapping(path="/findType",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
     public String selectType(@RequestParam Map<String, Object> p) throws JsonProcessingException {
         List<TaskType> list = taskTypeService.selectType();
+        System.out.println(list);
         ObjectMapper mapper = new ObjectMapper();
         String s = mapper.writeValueAsString(list);
         return s;
     }
 
-    //查询类型下的任务,需要传递类型？？
-    @RequestMapping(path="/findTaskType")
-    public String selectTaskType(Model model, int typeId) {
+    //查询类型下的任务,需要传递类型
+    @ResponseBody
+    @RequestMapping(path="/findTaskType/{id}",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
+    public String selectTaskType(@RequestParam Map<String, Object> p,@PathVariable("id")String id) throws JsonProcessingException {
+        int typeId = Integer.parseInt(id);
         List<TaskType> list = taskTypeService.selectTaskType(typeId);
-        model.addAttribute("list",list);
-        return "";
+        System.out.println(list);
+        //当前页
+        Integer pageIndex = 1;
+        //每页记录条数
+        int pageSize = 4;
+        //总记录数
+        int countIndex = list.size();
+        //总页数（向上取整）
+        int pageCount = (int)Math.ceil((double)countIndex/pageSize);
+//        if(request.getParameter("pageIndex")!=null){
+//            pageIndex = Integer.parseInt(request.getParameter("pageIndex"));
+//        }
+        //index代表偏移量
+        int index = (pageIndex-1)*pageSize;
+        //当前页的数据
+        List<TaskType> curList = taskTypeService.showList(typeId,index,pageSize);
+        System.out.println(curList);
+        Page<TaskType> pageUtil = new Page<TaskType>();
+        pageUtil.setPageIndex(pageIndex);
+        pageUtil.setPageCount(pageCount);
+        pageUtil.setPageNumber(countIndex);
+        pageUtil.setPageSize(pageSize);
+        pageUtil.setList(curList);
+        ObjectMapper mapper = new ObjectMapper();
+        String s = mapper.writeValueAsString(pageUtil);
+        return s;
     }
     @RequestMapping(path="/findById")
     public String selectById(Model model){

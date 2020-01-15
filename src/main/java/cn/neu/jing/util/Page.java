@@ -1,5 +1,6 @@
 package cn.neu.jing.util;
 
+
 import java.util.List;
 public class Page<T> {
     private int pageNumber; //总记录
@@ -17,5 +18,7 @@ public class Page<T> {
     public int getPageSize() {        return pageSize;    }
     public void setPageSize(int pageSize) {        this.pageSize = pageSize;    }
     public List<T> getList() {        return list;    }
-    public void setList(List<T> list) {        this.list = list;    }
+    public void setList(List<T> list) {
+        this.list = list;
+    }
 }

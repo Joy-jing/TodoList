@@ -30,6 +30,11 @@ public class TaskTypeServiceImpl implements TaskTypeService {
     }
 
     @Override
+    public List<TaskType> showList(int typeId, int start, int pageSize) {
+        return taskTypeDao.showList(typeId,start,pageSize);
+    }
+
+    @Override
     public TaskType selectById(int typeId) {
         return taskTypeDao.selectById(typeId);
     }
